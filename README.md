@@ -1,9 +1,7 @@
-Here is your **Notepad-friendly README file** (plain text, no formatting, no emojis).
-You can copy–paste directly into **Notepad / README.md**.
 
 ---
 
-## **README.txt (Notepad Version)**
+## **README.txt**
 
 Inkle Mini Twitter – Backend API (Flask + JWT)
 
@@ -177,3 +175,4 @@ Werkzeug
 * Ready for submission
 
 ---
+
