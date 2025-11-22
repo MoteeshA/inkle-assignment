@@ -1,178 +1,226 @@
+````markdown
+# 📘 Inkle Mini Twitter – Backend API (Flask + JWT)
+
+A lightweight backend implementing core Twitter-like features: signup/login, posting, following, blocking, liking, unliking, and a combined activity feed.  
+All routes are tested using Postman, and the Postman collection JSON is included.
 
 ---
 
-## **README.txt**
+## 🚀 Features Implemented
 
-Inkle Mini Twitter – Backend API (Flask + JWT)
+### 🔐 Authentication
+- User Signup  
+- User Login  
+- JWT Token Authentication  
 
-A lightweight backend that implements core Twitter-like features including user authentication, posting, following, blocking, liking, unliking, and activity feed. All endpoints are tested using Postman.
+### 📝 Posts
+- Create Post  
+- Get All Posts  
+- Like Post  
+- Unlike Post  
 
----
+### 👥 User Interactions
+- Follow User  
+- Unfollow User  
+- Block User  
 
-## FEATURES IMPLEMENTED
+### 📰 Activity Feed
+- Shows posts, likes, follows, blocks  
+- Sorted chronologically  
+- Includes user + following activity  
 
-Authentication
-
-* User Signup
-* User Login
-* JWT Token-based Authentication
-
-Posts
-
-* Create Post
-* Get All Posts
-* Like Post
-* Unlike Post
-
-User Interactions
-
-* Follow User
-* Unfollow User
-* Block User
-
-Activity Feed
-
-* View activity of user + following
-  (Posts, likes, follows, blocks in chronological order)
-
-Postman
-
-* All endpoints tested
-* Postman collection exported
+### 🧪 Postman Tested
+- All endpoints tested  
+- Exported Postman JSON included  
 
 ---
 
-## TECH STACK
+## 🛠 Tech Stack
 
-* Python 3
-* Flask
-* Flask SQLAlchemy
-* Flask-JWT-Extended
-* Flask-CORS
-* SQLite (default)
-* Postman
+- Python 3  
+- Flask  
+- Flask-SQLAlchemy  
+- Flask-JWT-Extended  
+- Flask-CORS  
+- SQLite (default DB)  
+- Postman  
 
 ---
 
-## PROJECT STRUCTURE
+## 📁 Project Structure
 
+```plaintext
 mini-twitter-backend/
-app.py
-config.py
-models.py
-auth_routes.py
-user_routes.py
-post_routes.py
-activity_routes.py
-requirements.txt
-README.md
-instance/
-database.sqlite  (auto-created)
+│
+├── app.py
+├── config.py
+├── models.py
+├── auth_routes.py
+├── user_routes.py
+├── post_routes.py
+├── activity_routes.py
+│
+├── helpers.py
+├── requirements.txt
+├── README.md
+│
+└── instance/
+    └── database.sqlite
+````
 
 ---
 
-## INSTALLATION AND SETUP
+## ⚙️ Installation & Setup
 
-1. Clone the repository:
-   git clone <your-repo-url>
-   cd mini-twitter-backend
+### 1️⃣ Clone the repo
 
-2. Create virtual environment:
-   python3 -m venv venv
-   source venv/bin/activate
+```bash
+git clone <your-github-repo-url>
+cd mini-twitter-backend
+```
 
-3. Install dependencies:
-   pip install -r requirements.txt
+### 2️⃣ Create a virtual environment
 
-4. Run the application:
-   python app.py
+```bash
+python3 -m venv venv
+source venv/bin/activate       # Mac/Linux
+venv\Scripts\activate          # Windows
+```
 
-Server runs at:
-[http://127.0.0.1:5000](http://127.0.0.1:5000)
+### 3️⃣ Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4️⃣ Run the server
+
+```bash
+python app.py
+```
+
+API will run at:
+
+```text
+http://127.0.0.1:5000
+```
 
 ---
 
-## AUTHENTICATION
+## 🔐 Authentication Example
 
-Login returns a JWT token like this:
+Login returns:
 
+```json
 {
-"access_token": "<JWT_TOKEN>",
-"user": { ... }
+  "access_token": "<JWT_TOKEN>",
+  "user": {
+    "id": 1,
+    "username": "testuser"
+  }
 }
+```
 
-Use this in Postman:
-Authorization -> Bearer Token -> paste token
+Use in Postman:
 
----
-
-## API ENDPOINTS
-
-AUTH
-POST /auth/signup      - Register new user
-POST /auth/login       - Login and get token
-
-POSTS
-POST /posts/           - Create post
-GET  /posts/           - Get all posts
-POST /posts/<id>/like  - Like post
-POST /posts/<id>/unlike - Unlike post
-
-USERS
-POST /users/follow/<id>     - Follow user
-POST /users/unfollow/<id>   - Unfollow user
-POST /users/block/<id>      - Block user
-
-ACTIVITY
-GET /activity/         - Get activity feed
+```text
+Authorization → Bearer Token → <JWT_TOKEN>
+```
 
 ---
 
-## POSTMAN COLLECTION
+## 📡 API Endpoints
 
-Includes:
+### 🔑 AUTH ROUTES
 
-* Sign Up
-* Login
-* Create Post
-* Get Posts
-* Follow
-* Unfollow
-* Block
-* Like
-* Unlike
-* Activity Feed
-
-Export from Postman:
-Collections → ... → Export
+| Method | Endpoint     | Description     |
+| ------ | ------------ | --------------- |
+| POST   | /auth/signup | Register user   |
+| POST   | /auth/login  | Login & get JWT |
 
 ---
 
-## NOTES
+### 📝 POST ROUTES
 
-* SQLite DB creates automatically.
-* Token expiry can be modified in config.py.
-* Authorization header is required for all protected routes.
+| Method | Endpoint           | Description     |
+| ------ | ------------------ | --------------- |
+| POST   | /posts/            | Create new post |
+| GET    | /posts/            | Get all posts   |
+| POST   | /posts/<id>/like   | Like a post     |
+| POST   | /posts/<id>/unlike | Unlike a post   |
 
 ---
 
-## REQUIREMENTS.TXT
+### 👤 USER ROUTES
 
+| Method | Endpoint             | Description     |
+| ------ | -------------------- | --------------- |
+| POST   | /users/follow/<id>   | Follow a user   |
+| POST   | /users/unfollow/<id> | Unfollow a user |
+| POST   | /users/block/<id>    | Block a user    |
+
+---
+
+### 📰 ACTIVITY ROUTES
+
+| Method | Endpoint   | Description            |
+| ------ | ---------- | ---------------------- |
+| GET    | /activity/ | Combined activity feed |
+
+---
+
+## 📦 Postman Collection
+
+Your exported Postman JSON file should be added to the project root:
+
+```text
+postman_collection.json
+```
+
+Import using:
+
+```text
+Postman → Collections → Import → select JSON file
+```
+
+---
+
+## 📝 Notes
+
+* SQLite database auto-creates inside the `instance/` folder.
+* Modify token expiry and JWT settings in `config.py`.
+* All protected routes require the header:
+
+```text
+Authorization: Bearer <token>
+```
+
+* Suitable for assignment submission and basic deployment.
+
+---
+
+## 📄 requirements.txt
+
+```text
 Flask
 Flask-SQLAlchemy
 Flask-JWT-Extended
 Flask-CORS
 Werkzeug
+```
 
 ---
 
-## FINAL OUTPUT INCLUDES
+## ✅ Final Output Includes
 
-* Complete backend API
-* All endpoints working
-* Postman tested
-* README documentation
-* Ready for submission
+* Complete backend implementation
+* Secure JWT authentication
+* Posts + likes + follows + blocks
+* Combined activity feed
+* Postman-tested API endpoints
+* Clean project structure
+* Professional README
+* Submission-ready package
 
----
-
+```
+```
